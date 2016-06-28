@@ -9,7 +9,7 @@ commands:
     usage: /diff
   setdiff:
     description: Used to set the difficulty (RoR) (usually from 0.01 - 1.0)
-    usage: /diff <double d>
+    usage: /setdiff <double d>
   pause:
     description: Pause the difficulty timer
     usage: /pause
