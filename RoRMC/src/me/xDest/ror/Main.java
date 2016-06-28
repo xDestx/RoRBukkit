@@ -44,8 +44,8 @@ public class Main extends JavaPlugin {
 		Messenger.info("Timer Started");
 		CraftingManager.enable();
 		Messenger.info("Crafting Enabled");
-		//PrayForJesus.enable(this);
-		Messenger.info("Jesus disabled");
+		PrayForJesus.enable(this);
+		Messenger.info("Jesus enabled");
 		Bukkit.getServer().getPluginManager().registerEvents(new EntitySpawnListener(this), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new EntityDamageListener(this), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new CustomCraftingListener(this), this);
@@ -54,8 +54,8 @@ public class Main extends JavaPlugin {
 		Bukkit.getServer().getPluginManager().registerEvents(new SkeletonShotListener(this), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new SpiderAttackListener(this), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new GuardianRainListener(this), this);
-		//Bukkit.getServer().getPluginManager().registerEvents(new ShiftDropListener(this), this);
-		//Bukkit.getServer().getPluginManager().registerEvents(new BlinkListener(this), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new ShiftDropListener(this), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new BlinkListener(this), this);
 		
 	}
 	
