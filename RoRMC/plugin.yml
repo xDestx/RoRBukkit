@@ -2,7 +2,7 @@ name: RoR
 
 main: me.xDest.ror.Main
 
-version: 0.1
+version: 1.0
 commands:
   diff:
     description: Used to check the difficulty (RoR)
