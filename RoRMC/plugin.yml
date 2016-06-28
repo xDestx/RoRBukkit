@@ -1,0 +1,27 @@
+name: RoR
+
+main: me.xDest.ror.Main
+
+version: 0.1
+commands:
+  diff:
+    description: Used to check the difficulty (RoR)
+    usage: /diff
+  setdiff:
+    description: Used to set the difficulty (RoR) (usually from 0.01 - 1.0)
+    usage: /diff <double d>
+  pause:
+    description: Pause the difficulty timer
+    usage: /pause
+  start:
+    description: Resume the difficulty timer
+    usage: /start
+  setdelay:
+    description: Set the difficulty change delay in seconds
+    usage: /setdelay <int delay (s)>
+  delay:
+    description: Used to check the current delay in seconds
+    usage: /delay
+  annihilate:
+    description: boom
+    usage: /annihilate
