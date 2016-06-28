@@ -8,17 +8,15 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-import me.xDest.ror.Jesus.PrayForJesus;
 import me.xDest.ror.crafting.CraftingManager;
 import me.xDest.ror.crafting.CustomCraftingListener;
 import me.xDest.ror.difficutly.DifficultyTimer;
-import me.xDest.ror.listener.BlinkListener;
 import me.xDest.ror.listener.CreeperExplosionListener;
 import me.xDest.ror.listener.EntityDamageListener;
 import me.xDest.ror.listener.EntityDeathListener;
 import me.xDest.ror.listener.EntitySpawnListener;
 import me.xDest.ror.listener.GuardianRainListener;
-import me.xDest.ror.listener.ShiftDropListener;
+import me.xDest.ror.listener.IronListener;
 import me.xDest.ror.listener.SkeletonShotListener;
 import me.xDest.ror.listener.SpiderAttackListener;
 
@@ -44,8 +42,8 @@ public class Main extends JavaPlugin {
 		Messenger.info("Timer Started");
 		CraftingManager.enable();
 		Messenger.info("Crafting Enabled");
-		PrayForJesus.enable(this);
-		Messenger.info("Jesus enabled");
+		//PrayForJesus.enable(this);
+	//	Messenger.info("Jesus enabled");
 		Bukkit.getServer().getPluginManager().registerEvents(new EntitySpawnListener(this), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new EntityDamageListener(this), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new CustomCraftingListener(this), this);
@@ -54,8 +52,9 @@ public class Main extends JavaPlugin {
 		Bukkit.getServer().getPluginManager().registerEvents(new SkeletonShotListener(this), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new SpiderAttackListener(this), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new GuardianRainListener(this), this);
-		Bukkit.getServer().getPluginManager().registerEvents(new ShiftDropListener(this), this);
-		Bukkit.getServer().getPluginManager().registerEvents(new BlinkListener(this), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new IronListener(this), this);
+		//Bukkit.getServer().getPluginManager().registerEvents(new ShiftDropListener(this), this);
+	//	Bukkit.getServer().getPluginManager().registerEvents(new BlinkListener(this), this);
 		
 	}
 	
