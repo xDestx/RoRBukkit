@@ -19,6 +19,18 @@ public class BlinkListener implements Listener {
 	private JavaPlugin pl;
 	private HashMap<UUID,Integer> blinkers;
 	
+	private static boolean enabled = false;
+	
+	public static boolean isEnabled()
+	{
+		return enabled;
+	}
+	
+	public static void setEnabled(boolean b)
+	{
+		enabled = b;
+	}
+	
 	public BlinkListener(JavaPlugin pl)
 	{
 		this.pl = pl;
@@ -28,16 +40,23 @@ public class BlinkListener implements Listener {
 	@EventHandler
 	public void playerRightclickListener(final PlayerInteractEvent e)
 	{
+		if(!BlinkListener.isEnabled())
+			return;
 		if(e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK)
 		{
 			/*
 			 * Attempt 2 
 			 */
 		//	final BlinkListener self = this;
+			if(!blinkers.containsKey(e.getPlayer().getUniqueId()))
+				blinkers.put(e.getPlayer().getUniqueId(), new Integer(3));
+			if(blinkers.get(e.getPlayer().getUniqueId()).intValue() <= 0)
+				return;
 			if(e.getPlayer().getItemInHand().getType() == Material.STICK)
 			{
 				final Location startLocation = e.getPlayer().getLocation();
 				decrementPlayerCharge(e.getPlayer());
+				informOnAmount(e.getPlayer());
 				Bukkit.getScheduler().scheduleSyncDelayedTask(pl, new Runnable()
 						{
 					@Override

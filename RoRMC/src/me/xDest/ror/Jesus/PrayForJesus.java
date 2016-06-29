@@ -2,29 +2,38 @@ package me.xDest.ror.Jesus;
 
 import java.util.Random;
 
-import me.xDest.ror.Messenger;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
-import org.bukkit.entity.Creeper;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.event.entity.EntityDamageEvent;
 import org.bukkit.event.entity.EntityDamageEvent.DamageModifier;
 import org.bukkit.plugin.java.JavaPlugin;
+
+import me.xDest.ror.Main;
+import me.xDest.ror.Messenger;
 
 public class PrayForJesus {
 
 	private static boolean enabled = false;
 	private static JavaPlugin pl;
 	
-	public static void enable(JavaPlugin pl)
+	public static void init(JavaPlugin pl)
 	{
 		PrayForJesus.pl = pl;
-		enabled = true;
+	}
+	
+	public static void setEnabled(boolean b)
+	{
+		if(pl == null)
+			return;
+		enabled = b;
+	}
+	
+	public static boolean isEnabled()
+	{
+		return enabled;
 	}
 	
 	public static void pray(EntityDamageEvent e)
@@ -72,7 +81,7 @@ public class PrayForJesus {
 					}
 					
 				}, delay);
-				Messenger.info("" + delay);
+			//	Messenger.info("" + delay);
 			}
 		} else {
 			

@@ -2,8 +2,11 @@ name: RoR
 
 main: me.xDest.ror.Main
 
-version: 1.0
+version: 1.1
 commands:
+  rorreset:
+    description: Used to reset config
+    usage: /rorreset
   diff:
     description: Used to check the difficulty (RoR)
     usage: /diff

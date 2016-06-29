@@ -16,8 +16,22 @@ import org.bukkit.util.Vector;
 
 public class ShiftDropListener implements Listener {
 
+	private static boolean isEnabled = false;
+	
 	private JavaPlugin pl;
 	private ArrayList<UUID> bootyDroppinPlayers;
+	
+	
+	public static boolean isEnabled()
+	{
+		return isEnabled;
+	}
+	
+	public static void setEnabled(boolean b)
+	{
+		isEnabled = b;
+	}
+	
 	
 	public ShiftDropListener(JavaPlugin pl)
 	{
@@ -28,6 +42,8 @@ public class ShiftDropListener implements Listener {
 	@EventHandler
 	public void playerInitiateBootyDrop(PlayerToggleSneakEvent e)
 	{
+		if(!ShiftDropListener.isEnabled())
+			return;
 		if(e.getPlayer().isSneaking() || bootyDroppinPlayers.contains(e.getPlayer().getUniqueId()))
 			return;
 		World w = e.getPlayer().getWorld();
@@ -46,6 +62,8 @@ public class ShiftDropListener implements Listener {
 	@EventHandler
 	public void playerBootyDropEvent(PlayerMoveEvent e)
 	{
+		if(!ShiftDropListener.isEnabled())
+			return;
 		if(!bootyDroppinPlayers.contains(e.getPlayer().getUniqueId()))
 			return;
 		

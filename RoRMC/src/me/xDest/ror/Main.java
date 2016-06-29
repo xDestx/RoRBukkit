@@ -8,15 +8,18 @@ import org.bukkit.entity.EntityType;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
+import me.xDest.ror.Jesus.PrayForJesus;
 import me.xDest.ror.crafting.CraftingManager;
 import me.xDest.ror.crafting.CustomCraftingListener;
 import me.xDest.ror.difficutly.DifficultyTimer;
+import me.xDest.ror.listener.BlinkListener;
 import me.xDest.ror.listener.CreeperExplosionListener;
 import me.xDest.ror.listener.EntityDamageListener;
 import me.xDest.ror.listener.EntityDeathListener;
 import me.xDest.ror.listener.EntitySpawnListener;
 import me.xDest.ror.listener.GuardianRainListener;
 import me.xDest.ror.listener.IronListener;
+import me.xDest.ror.listener.ShiftDropListener;
 import me.xDest.ror.listener.SkeletonShotListener;
 import me.xDest.ror.listener.SpiderAttackListener;
 
@@ -42,9 +45,11 @@ public class Main extends JavaPlugin {
 		Messenger.info("Timer Started");
 		CraftingManager.enable();
 		Messenger.info("Crafting Enabled");
-		//PrayForJesus.enable(this);
-	//	Messenger.info("Jesus enabled");
-		Bukkit.getServer().getPluginManager().registerEvents(new EntitySpawnListener(this), this);
+		PrayForJesus.init(this);
+	    Messenger.info("Jesus enabled");
+		ConfigLoader.enable(this);
+		ConfigLoader.loadConfig();
+	    Bukkit.getServer().getPluginManager().registerEvents(new EntitySpawnListener(this), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new EntityDamageListener(this), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new CustomCraftingListener(this), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new EntityDeathListener(this), this);
@@ -53,8 +58,8 @@ public class Main extends JavaPlugin {
 		Bukkit.getServer().getPluginManager().registerEvents(new SpiderAttackListener(this), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new GuardianRainListener(this), this);
 		Bukkit.getServer().getPluginManager().registerEvents(new IronListener(this), this);
-		//Bukkit.getServer().getPluginManager().registerEvents(new ShiftDropListener(this), this);
-	//	Bukkit.getServer().getPluginManager().registerEvents(new BlinkListener(this), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new ShiftDropListener(this), this);
+		Bukkit.getServer().getPluginManager().registerEvents(new BlinkListener(this), this);
 		
 	}
 	
@@ -72,6 +77,13 @@ public class Main extends JavaPlugin {
 	{
 		if (!(sender instanceof Player))
 		{
+			if(label.equals("rorreset"))
+			{
+				Messenger.broadcast("Resetting config");
+				ConfigLoader.reset();
+				ConfigLoader.loadConfig();
+				return true;
+			}
 			if (label.equals("diff"))
 			{
 				Messenger.info("The difficulty is " + (int) (DifficultyTimer.getDifficulty() * 100) + "%");
@@ -103,6 +115,13 @@ public class Main extends JavaPlugin {
 			return false;
 		}
 		Player p = (Player) sender;
+		if(label.equals("rorreset"))
+		{
+			Messenger.broadcast("Resetting config");
+			ConfigLoader.reset();
+			ConfigLoader.loadConfig();
+			return true;
+		}
 		if (label.equals("diff"))
 		{
 			p.sendMessage(ChatColor.DARK_RED + "The difficulty is " + ChatColor.GOLD + (int) (DifficultyTimer.getDifficulty() * 100) + "%");
