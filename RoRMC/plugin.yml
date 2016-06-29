@@ -2,7 +2,7 @@ name: RoR
 
 main: me.xDest.ror.Main
 
-version: 1.1
+version: 1.2
 commands:
   rorreset:
     description: Used to reset config
