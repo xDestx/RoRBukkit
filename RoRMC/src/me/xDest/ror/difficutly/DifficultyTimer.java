@@ -1,13 +1,13 @@
 package me.xDest.ror.difficutly;
 
-import me.xDest.ror.Messenger;
-
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
+
+import me.xDest.ror.Messenger;
 
 
 
@@ -113,15 +113,15 @@ public class DifficultyTimer {
 		for (Player p : Bukkit.getOnlinePlayers())
 		{
 			final Player p1 = p;
-			p.playSound(p.getLocation(), Sound.ZOMBIE_REMEDY, 2.0f, 0.75f);
-			p.playSound(p.getLocation(), Sound.GHAST_SCREAM, 2.0f, 0.25f);
+			p.playSound(p.getLocation(), Sound.ENTITY_ZOMBIE_VILLAGER_CURE, 2.0f, 0.75f);
+			p.playSound(p.getLocation(), Sound.ENTITY_GHAST_SCREAM, 2.0f, 0.25f);
 			p.getWorld().strikeLightningEffect(p.getLocation());
 			Bukkit.getScheduler().scheduleSyncDelayedTask(pl, new Runnable()
 			{
 				@Override
 				public void run()
 				{
-					p1.playSound(p1.getLocation(), Sound.ANVIL_BREAK, 1.75f, 0.01f);
+					p1.playSound(p1.getLocation(), Sound.BLOCK_ANVIL_BREAK, 1.75f, 0.01f);
 				}
 			},20l);
 		}

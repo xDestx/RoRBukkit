@@ -68,7 +68,7 @@ public class PrayForJesus {
 					@Override
 					public void run()
 					{
-						p.getWorld().playSound(p.getLocation(), Sound.LEVEL_UP, 1.0f, (float) (x * .1));
+						p.getWorld().playSound(p.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0f, (float) (x * .1));
 					}
 					
 				}, delay);
