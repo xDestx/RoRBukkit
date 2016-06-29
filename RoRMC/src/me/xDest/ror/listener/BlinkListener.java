@@ -30,19 +30,6 @@ public class BlinkListener implements Listener {
 	{
 		if(e.getAction() == Action.RIGHT_CLICK_AIR || e.getAction() == Action.RIGHT_CLICK_BLOCK)
 		{
-			if(blinkers.containsKey(e.getPlayer().getUniqueId()))
-			{
-				if(blinkers.get(e.getPlayer().getUniqueId()).intValue() <= 0)
-				{
-					informOnAmount(e.getPlayer());
-					return;
-				}
-			} else {
-				blinkers.put(e.getPlayer().getUniqueId(), 3);
-			}
-			
-			decrementPlayerCharge(e.getPlayer());
-			informOnAmount(e.getPlayer());
 			/*
 			 * Attempt 2 
 			 */
@@ -50,6 +37,7 @@ public class BlinkListener implements Listener {
 			if(e.getPlayer().getItemInHand().getType() == Material.STICK)
 			{
 				final Location startLocation = e.getPlayer().getLocation();
+				decrementPlayerCharge(e.getPlayer());
 				Bukkit.getScheduler().scheduleSyncDelayedTask(pl, new Runnable()
 						{
 					@Override
